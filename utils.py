@@ -11,3 +11,7 @@ def fixEmptyFile():
     if empty:
         with open(DATA_FILE, "w") as file:
             json.dump([], file)
+
+def loadData():
+    with open(DATA_FILE, "r") as file:
+        return json.load(file)

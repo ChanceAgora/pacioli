@@ -1,16 +1,12 @@
 from config import DATA_FILE
 import json
+from utils import loadData
 
-def summarize():
+def getSummary(jsonData):
     analytics = {
             "total_minutes": 0,
             "by_topic": {}
             }
-
-    jsonData = []
-
-    with open(DATA_FILE, "r") as file:
-        jsonData = json.load(file)
 
     for i in jsonData:
         analytics["total_minutes"] += i["minutes"]
@@ -18,7 +14,12 @@ def summarize():
             analytics["by_topic"][i["topic"]] += i["minutes"]
         except KeyError:
             analytics["by_topic"][i["topic"]] = i["minutes"]
-    print(json.dumps(analytics, indent=2))
+
+    return analytics
+
+def summarize():
+    jsonData = loadData()
+    print(json.dumps(getSummary(jsonData), indent=4))
 
 def saveSession():
     jsonData = []

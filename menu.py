@@ -9,7 +9,8 @@ def mainMenu():
         print(f"{i + 1}. {list(mainMenuOptions.keys())[i]}")
 
 def quitPacioli():
-    sys.exit("Goodbye!")
+    print("Goodbye!")
+    sys.exit(0)
 
 mainMenuOptions = {
         "Save a Session": useData.saveSession,

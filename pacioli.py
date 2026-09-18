@@ -14,7 +14,6 @@ def main():
             menu.mainMenuOptions[choice]()
         except ValueError:
             print("Invalid option")
-            print()
             continue
 
 if __name__ == "__main__":

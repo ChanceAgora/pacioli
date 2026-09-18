@@ -1,7 +1,4 @@
-import json
 import menu
-
-FILE = "sessions.json"
 
 def main():
 

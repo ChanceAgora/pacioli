@@ -4,7 +4,7 @@ import json
 def summarize():
     analytics = {
             "total_minutes": 0,
-            "by_topic": []
+            "by_topic": {}
             }
 
     jsonData = []

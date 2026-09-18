@@ -18,7 +18,7 @@ def summarize():
             analytics["by_topic"][i["topic"]] += i["minutes"]
         except KeyError:
             analytics["by_topic"][i["topic"]] = i["minutes"]
-    print(analytics)
+    print(json.dumps(analytics, indent=2))
 
 def saveSession():
     jsonData = []

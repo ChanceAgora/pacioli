@@ -1,7 +1,9 @@
+import utils
 import menu
 
 def main():
 
+    utils.fixEmptyFile()
     menu.welcome()
     while(True):
         menu.mainMenu()

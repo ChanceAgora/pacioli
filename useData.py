@@ -34,8 +34,7 @@ def saveSession():
         json.dump(jsonData, file)
 
 def getSessionData():
-    topic = input("What topic did you study?").lower()
-    minutes = int(input("Number of minutes?"))
+    topic = input("What topic did you study? ").strip().lower()
+    minutes = int(input("Number of minutes? "))
 
     return {"topic": topic, "minutes": minutes}
-

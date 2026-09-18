@@ -1,19 +1,19 @@
-def summarize(jsonData):
+def summarize():
+    print("Summarize called")
+    # analytics = {
+    #         "total_minutes": 0,
+    #         "by_topic": []
+    #         }
+    # for i in jsonData:
+    #     analytics["total_minutes"] += i["minutes"]
+    #     try:
+    #         analytics["by_topic"][i["topic"]] += i["minutes"]
+    #     except KeyError:
+    #         analytics["by_topic"][i["topic"]] = i["minutes"]
+    # print(analytics)
 
-    analytics = {
-            "total_minutes": 0,
-            "by_topic": []
-            }
+def saveSession():
 
-    for i in jsonData:
-        analytics["total_minutes"] += i["minutes"]
+    print("Save Session called")
 
-        try:
-            analytics["by_topic"][i["topic"]] += i["minutes"]
-        except KeyError:
-            analytics["by_topic"][i["topic"]] = i["minutes"]
-
-    print(analytics)
-
-def saveSession(session, jsonData):
-    jsonData.append(session)
+    # jsonData.append(session)

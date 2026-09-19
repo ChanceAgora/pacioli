@@ -9,6 +9,9 @@ def getSummary(jsonData):
             }
 
     for i in jsonData:
+        if type(i) != dict:
+            continue
+
         analytics["total_minutes"] += i["minutes"]
         try:
             analytics["by_topic"][i["topic"]] += i["minutes"]

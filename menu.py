@@ -13,8 +13,9 @@ def quitPacioli():
     sys.exit(0)
 
 mainMenuOptions = {
-        "Save a Session": useData.saveSession,
+        "Show All Stats": useData.showAll,
         "Summarize History": useData.summarize,
+        "Save a Session": useData.saveSession,
         "Quit": quitPacioli,
         }
 

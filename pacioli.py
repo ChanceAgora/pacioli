@@ -1,9 +1,10 @@
 import utils
 import menu
+from config import DATA_FILE
 
 def main():
 
-    utils.fixEmptyFile()
+    utils.fixEmptyFile(DATA_FILE)
     menu.welcome()
 
     while True:

@@ -1,6 +1,6 @@
 from config import DATA_FILE
 import json
-from utils import loadData
+from utils import loadData, exportData
 
 def getSummary(jsonData):
     analytics = {
@@ -18,24 +18,25 @@ def getSummary(jsonData):
     return analytics
 
 def summarize():
-    jsonData = loadData()
-    print(json.dumps(getSummary(jsonData), indent=4))
+    summary = loadData(DATA_FILE)
+    summary = getSummary(summary)
+    print(json.dumps(summary, indent=4))
+
 
 def saveSession():
-    jsonData = []
-
-    with open(DATA_FILE, "r") as file:
-        jsonData = json.load(file)
-
+    jsonData = loadData(DATA_FILE)
     session = getSessionData()
-
     jsonData.append(session)
+    exportData(jsonData, DATA_FILE)
 
-    with open(DATA_FILE, "w") as file:
-        json.dump(jsonData, file)
 
 def getSessionData():
     topic = input("What topic did you study? ").strip().lower()
     minutes = int(input("Number of minutes? "))
 
     return {"topic": topic, "minutes": minutes}
+
+
+def showAll():
+    session = loadData(DATA_FILE)
+    print(json.dumps(session, indent=4))

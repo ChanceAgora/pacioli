@@ -33,11 +33,32 @@ def saveSession():
     exportData(jsonData, DATA_FILE)
 
 
+
 def getSessionData():
     topic = input("What topic did you study? ").strip().lower()
     minutes = int(input("Number of minutes? "))
 
     return {"topic": topic, "minutes": minutes}
+
+def parse_session(topic, minutes):
+    topic = topic.strip().lower()
+    minutes = minutes.strip()
+
+    if topic == "":
+        raise ValueError("Topic cannot be empty.")
+    if minutes == "":
+        raise ValueError("Minutes cannot be empty.")
+    
+    try:
+        minutes = int(minutes)
+    except ValueError:
+        raise ValueError("Minutes must be a number in digits.")
+
+    if minutes < 1:
+        raise ValueError("Minutes must be more than 0.")
+
+    return {"topic": topic, "minutes": minutes}
+
 
 
 def showAll():

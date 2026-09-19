@@ -13,7 +13,7 @@ def main():
 
         try:
             choice = int(choice) - 1
-            if choice < 0 or choice > len(menu.mainMenuOptions.keys()):
+            if choice < 0 or choice >= len(menu.mainMenuOptions.keys()):
                 raise ValueError("Invalid Option")
         except ValueError:
             print("Invalid Selection")

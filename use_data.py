@@ -1,6 +1,6 @@
 from config import DATA_FILE
 import json
-from utils import loadData, exportData
+from json_utils import loadData, exportData
 
 def getSummary(jsonData):
     analytics = {

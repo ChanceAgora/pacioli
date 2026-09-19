@@ -1,5 +1,5 @@
 import sys
-import useData
+import use_data
 
 def welcome():
     print("=" * 25, "Welcome!", "=" * 25)
@@ -13,9 +13,9 @@ def quitPacioli():
     sys.exit(0)
 
 mainMenuOptions = {
-        "Show All Stats": useData.showAll,
-        "Summarize History": useData.summarize,
-        "Save a Session": useData.saveSession,
+        "Show All Stats": use_data.showAll,
+        "Summarize History": use_data.summarize,
+        "Save a Session": use_data.saveSession,
         "Quit": quitPacioli,
         }
 

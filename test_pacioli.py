@@ -1,6 +1,7 @@
 from pacioli import parse_menu_choice
+from menu import mainMenuOptions as menu_options
 
-invalid_choices = ("0", "21e3", "-1", "apple", "")
+invalid_choices = ("0", len(menu_options) + 1, "21e3", "-1", "apple", "")
 
 for choice in invalid_choices:
     try:

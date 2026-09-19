@@ -1,7 +1,7 @@
-import useData
+import use_data
 from copy import deepcopy
 
-empty_result = useData.getSummary([])
+empty_result = use_data.getSummary([])
 
 assert empty_result == {
         "total_minutes": 0,
@@ -18,7 +18,7 @@ sessions = [
 
 original_sessions = deepcopy(sessions)
 
-result = useData.getSummary(sessions)
+result = use_data.getSummary(sessions)
 
 assert result == {
     "total_minutes": 90,

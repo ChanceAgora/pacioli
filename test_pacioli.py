@@ -12,8 +12,8 @@ for choice in invalid_choices:
                 f"Function exited normally. Expected ValueError for {choice!r}"
                 )
 
-assert parse_menu_choice("1", options_length) == 0
-assert parse_menu_choice("2", options_length) == 1
+assert parse_menu_choice("1", 4) == 0
+assert parse_menu_choice("2", 4) == 1
 assert parse_menu_choice("4", 4) == 3
 
 print("All main Pacioli checks passed.")

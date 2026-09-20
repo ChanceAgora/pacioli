@@ -77,5 +77,21 @@ with patch(
                     f"Unexpected output. {result}"
                     )
 
+with patch(
+        "builtins.input",
+        side_effect=[
+            "", "45",
+            "Objects", "",
+            "objects", "10"
+            ]
+        ):
+    with patch("builtins.print"):
+        result = use_data.getSessionData()
+
+        assert result == {
+            "topic": "objects",
+            "minutes": 10
+            }
+
 
 print("All use_data checks passed.")

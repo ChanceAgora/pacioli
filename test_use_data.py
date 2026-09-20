@@ -1,5 +1,6 @@
 import use_data
 from copy import deepcopy
+from unittest.mock import patch
 
 empty_result = use_data.calc_analytics([])
 
@@ -61,6 +62,20 @@ for topic_text, minutes_text in invalid_sessions:
         pass
     else:
         raise AssertionError(f"Expected ValueError. Function ran normally for {i}")
+
+
+with patch(
+        "builtins.input",
+        side_effect=["   PYthOn  ", "15"]
+        ):
+    result = use_data.getSessionData()
+
+    assert result == {
+            "topic": "python",
+            "minutes": 15
+            }, (
+                    f"Unexpected output. {result}"
+                    )
 
 
 print("All use_data checks passed.")

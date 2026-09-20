@@ -1,9 +1,9 @@
 from config import DATA_FILE
 import json
 from json_utils import loadData, exportData
-from models import Session
+from models import Session, Analytics
 
-def calc_analytics(jsonData: list[Session]) -> dict[str, int]:
+def calc_analytics(jsonData: list[Session]) -> Analytics:
     analytics = {
             "total_minutes": 0,
             "by_topic": {}

@@ -54,9 +54,9 @@ invalid_sessions = (
         ( "python", "fifteen" )
         )
 
-for i in invalid_sessions:
+for topic_text, minutes_text in invalid_sessions:
     try:
-        use_data.parse_session(i[0], i[1])
+        use_data.parse_session(topic_text, minutes_text)
     except ValueError:
         pass
     else:

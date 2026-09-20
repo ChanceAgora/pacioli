@@ -1,9 +1,9 @@
 from config import DATA_FILE
 import json
 from json_utils import loadData, exportData
-from models import session
+from models import Session
 
-def calc_analytics(jsonData: list[dict[str, int]]) -> dict[str, int]:
+def calc_analytics(jsonData: list[Session]) -> dict[str, int]:
     analytics = {
             "total_minutes": 0,
             "by_topic": {}
@@ -35,7 +35,7 @@ def saveSession() -> None:
 
 
 
-def getSessionData() -> session:
+def getSessionData() -> Session:
     while True:
         topic_text = input("What topic did you study? ")
         minutes_text = input("Number of minutes? ")
@@ -45,7 +45,7 @@ def getSessionData() -> session:
         except ValueError as error:
             print(error)
 
-def parse_session(topic: str, minutes_text: str) -> session:
+def parse_session(topic: str, minutes_text: str) -> Session:
     topic = topic.strip().lower()
     minutes_text = minutes_text.strip()
 

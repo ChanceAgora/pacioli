@@ -1,5 +1,5 @@
 from typing import TypedDict
 
-class session(TypedDict):
+class Session(TypedDict):
     topic: str
     minutes: int

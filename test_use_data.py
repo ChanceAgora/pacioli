@@ -33,14 +33,14 @@ assert original_sessions == sessions, (
         )
 
 
-assert use_data.parse_session("test", 10) == {
+assert use_data.parse_session("test", "10") == {
         "topic": "test",
         "minutes": 10
         }
 
 try:
-    assert use_data.parse_session("blah", 0)
-    assert use_data.parse_session("blah", -1)
+    assert use_data.parse_session("test", "0")
+    assert use_data.parse_session("test", "-1")
 except ValueError:
     pass
 else:

@@ -2,7 +2,7 @@ from config import DATA_FILE
 import json
 from json_utils import loadData, exportData
 
-def getSummary(jsonData):
+def calc_analytics(jsonData: list[dict[str, int]]) -> dict[str, int]:
     analytics = {
             "total_minutes": 0,
             "by_topic": {}
@@ -20,13 +20,13 @@ def getSummary(jsonData):
 
     return analytics
 
-def summarize():
+def summarize() -> None:
     summary = loadData(DATA_FILE)
-    summary = getSummary(summary)
+    summary = calc_analytics(summary)
     print(json.dumps(summary, indent=4))
 
 
-def saveSession():
+def saveSession() -> None:
     jsonData = loadData(DATA_FILE)
     session = getSessionData()
     jsonData.append(session)
@@ -34,7 +34,7 @@ def saveSession():
 
 
 
-def getSessionData():
+def getSessionData() -> dict[str, int]:
     topic = input("What topic did you study? ")
     minutes = int(input("Number of minutes? "))
 
@@ -44,7 +44,7 @@ def getSessionData():
         except ValueError as error:
             print(error)
 
-def parse_session(topic, minutes):
+def parse_session(topic: str, minutes: str) -> dict[str, int]:
     topic = topic.strip().lower()
     minutes = minutes.strip()
 
@@ -65,6 +65,6 @@ def parse_session(topic, minutes):
 
 
 
-def showAll():
+def showAll() -> None:
     session = loadData(DATA_FILE)
     print(json.dumps(session, indent=4))

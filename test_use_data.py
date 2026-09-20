@@ -1,13 +1,13 @@
 import use_data
 from copy import deepcopy
 
-empty_result = use_data.getSummary([])
+empty_result = use_data.calc_analytics([])
 
 assert empty_result == {
         "total_minutes": 0,
         "by_topic": {},
         }, (
-                f"Unexpected result for empty input in getSummary: {empty_result}"
+                f"Unexpected result for empty input: {empty_result}"
                 )
 
 sessions = [
@@ -18,7 +18,7 @@ sessions = [
 
 original_sessions = deepcopy(sessions)
 
-result = use_data.getSummary(sessions)
+result = use_data.calc_analytics(sessions)
 
 assert result == {
     "total_minutes": 90,
@@ -29,7 +29,22 @@ assert result == {
 }, f"Unexpected summary: {result}"
 
 assert original_sessions == sessions, (
-        f"Function getSummary mutated input. Expected {original_sessions}, got {sessions}"
+        f"Function mutated input. Expected {original_sessions}, got {sessions}"
         )
+
+
+assert use_data.parse_session("test", 10) == {
+        "topic": "test",
+        "minutes": 10
+        }
+
+try:
+    assert use_data.parse_session("blah", 0)
+    assert use_data.parse_session("blah", -1)
+except ValueError:
+    pass
+else:
+    raise AssertionError("Expected ValueError. Function ran normally.")
+
 
 print("All use_data checks passed.")

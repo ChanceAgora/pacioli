@@ -56,7 +56,7 @@ invalid_sessions = (
 
 for i in invalid_sessions:
     try:
-        assert use_data.parse_session(i[0], i[1])
+        use_data.parse_session(i[0], i[1])
     except ValueError:
         pass
     else:

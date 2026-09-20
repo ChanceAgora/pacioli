@@ -1,6 +1,6 @@
 import json
 
-def fixEmptyFile(dataFile):
+def fixEmptyFile(dataFile: str) -> None:
     empty = False
 
     with open(dataFile, "r") as file:
@@ -11,10 +11,10 @@ def fixEmptyFile(dataFile):
         with open(dataFile, "w") as file:
             json.dump([], file)
 
-def loadData(dataFile):
+def loadData(dataFile: str):
     with open(dataFile, "r") as file:
         return json.load(file)
 
-def exportData(data, dataFile):
+def exportData(data: list[dict[str, int]], dataFile: str):
     with open(dataFile, "w") as file:
         json.dump(data, file)

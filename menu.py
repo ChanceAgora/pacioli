@@ -1,14 +1,14 @@
 import sys
 import use_data
 
-def welcome():
+def welcome() -> None:
     print("=" * 25, "Welcome!", "=" * 25)
 
-def mainMenu():
+def mainMenu() -> None:
     for i in range(len(mainMenuOptions.keys())):
         print(f"{i + 1}. {list(mainMenuOptions.keys())[i]}")
 
-def quitPacioli():
+def quitPacioli() -> None:
     print("Goodbye!")
     sys.exit(0)
 

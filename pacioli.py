@@ -19,11 +19,11 @@ def main():
         choice = list(menu.mainMenuOptions.keys())[choice]
         menu.mainMenuOptions[choice]()
 
-def parse_menu_choice(choice, num_options):
-    choice = int(choice) - 1
-    if choice < 0 or choice >= num_options:
+def parse_menu_choice(choice: str, num_options: int):
+    int_choice = int(choice) - 1
+    if int_choice < 0 or int_choice >= num_options:
         raise ValueError
-    return choice
+    return int_choice
 
 if __name__ == "__main__":
     main()

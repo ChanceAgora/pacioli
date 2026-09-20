@@ -35,12 +35,12 @@ def saveSession() -> None:
 
 
 def getSessionData() -> dict[str, int]:
-    topic = input("What topic did you study? ")
-    minutes = int(input("Number of minutes? "))
+    topic_text = input("What topic did you study? ")
+    minutes_text = input("Number of minutes? ")
 
     while True:
         try:
-            return parse_session(topic, minutes)
+            return parse_session(topic_text, minutes_text)
         except ValueError as error:
             print(error)
 

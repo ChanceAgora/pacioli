@@ -45,7 +45,10 @@ def getSessionData() -> Session:
         except ValueError as error:
             print(error)
 
-def parse_session(topic: str, minutes_text: str) -> Session:
+def parse_session(
+        topic: str, 
+        minutes_text: str
+        ) -> Session:
     topic = topic.strip().lower()
     minutes_text = minutes_text.strip()
 

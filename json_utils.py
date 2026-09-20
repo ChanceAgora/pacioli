@@ -12,7 +12,7 @@ def fixEmptyFile(dataFile: str) -> None:
         with open(dataFile, "w") as file:
             json.dump([], file)
 
-def loadData(dataFile: str) -> list(Session):
+def loadData(dataFile: str) -> list[Session]:
     with open(dataFile, "r") as file:
         return json.load(file)
 

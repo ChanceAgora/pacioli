@@ -59,7 +59,7 @@ for i in invalid_sessions:
     except ValueError:
         pass
     else:
-        raise AssertionError("Expected ValueError. Function ran normally.")
+        raise AssertionError(f"Expected ValueError. Function ran normally for {i}")
 
 
 print("All use_data checks passed.")

@@ -33,18 +33,33 @@ assert original_sessions == sessions, (
         )
 
 
-assert use_data.parse_session("test", "10") == {
-        "topic": "test",
+assert use_data.parse_session("python", "10") == {
+        "topic": "python",
         "minutes": 10
         }
+assert use_data.parse_session("   FUNCTIONS   ", "30") == {
+        "topic": "functions",
+        "minutes": 30
+        }
+assert use_data.parse_session("objects", "  30  ") == {
+        "topic": "objects",
+        "minutes": 30
+        }
 
-try:
-    assert use_data.parse_session("test", "0")
-    assert use_data.parse_session("test", "-1")
-except ValueError:
-    pass
-else:
-    raise AssertionError("Expected ValueError. Function ran normally.")
+invalid_sessions = (
+        ( "", "30" ),
+        ( "tests", "" ),
+        ( "tests", "  -3  " ),
+        ( "procedural code", "0" )
+        )
+
+for i in invalid_sessions:
+    try:
+        assert use_data.parse_session(i[0], i[1])
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Expected ValueError. Function ran normally.")
 
 
 print("All use_data checks passed.")

@@ -1,6 +1,7 @@
 from config import DATA_FILE
 import json
 from json_utils import loadData, exportData
+from models import session
 
 def calc_analytics(jsonData: list[dict[str, int]]) -> dict[str, int]:
     analytics = {
@@ -44,17 +45,17 @@ def getSessionData() -> dict[str, int]:
         except ValueError as error:
             print(error)
 
-def parse_session(topic: str, minutes: str) -> dict[str, int]:
+def parse_session(topic: str, minutes_text: str) -> session:
     topic = topic.strip().lower()
-    minutes = minutes.strip()
+    minutes_text = minutes_text.strip()
 
     if topic == "":
         raise ValueError("Topic cannot be empty.")
-    if minutes == "":
+    if minutes_text == "":
         raise ValueError("Minutes cannot be empty.")
     
     try:
-        minutes = int(minutes)
+        minutes = int(minutes_text)
     except ValueError:
         raise ValueError("Minutes must be a number in digits.")
 

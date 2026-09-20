@@ -1,4 +1,5 @@
 import json
+from models import Session
 
 def fixEmptyFile(dataFile: str) -> None:
     empty = False
@@ -11,10 +12,10 @@ def fixEmptyFile(dataFile: str) -> None:
         with open(dataFile, "w") as file:
             json.dump([], file)
 
-def loadData(dataFile: str):
+def loadData(dataFile: str) -> list(Session):
     with open(dataFile, "r") as file:
         return json.load(file)
 
-def exportData(data: list[dict[str, int]], dataFile: str):
+def exportData(data: list[Session], dataFile: str) -> None:
     with open(dataFile, "w") as file:
         json.dump(data, file)

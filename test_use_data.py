@@ -61,7 +61,7 @@ for topic_text, minutes_text in invalid_sessions:
     except ValueError:
         pass
     else:
-        raise AssertionError(f"Expected ValueError. Function ran normally for {i}")
+        raise AssertionError(f"Expected ValueError. Function ran normally for {topic_text}, {minutes_text}")
 
 
 with patch(

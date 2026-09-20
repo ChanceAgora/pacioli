@@ -50,7 +50,8 @@ invalid_sessions = (
         ( "", "30" ),
         ( "tests", "" ),
         ( "tests", "  -3  " ),
-        ( "procedural code", "0" )
+        ( "procedural code", "0" ),
+        ( "python", "fifteen" )
         )
 
 for i in invalid_sessions:

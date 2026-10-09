@@ -4,18 +4,18 @@ import use_data
 def welcome() -> None:
     print("=" * 25, "Welcome!", "=" * 25)
 
-def mainMenu() -> None:
-    for i in range(len(mainMenuOptions.keys())):
-        print(f"{i + 1}. {list(mainMenuOptions.keys())[i]}")
+def main_menu() -> None:
+    for i in range(len(main_menu_options.keys())):
+        print(f"{i + 1}. {list(main_menu_options.keys())[i]}")
 
-def quitPacioli() -> None:
+def quit_pacioli() -> None:
     print("Goodbye!")
     sys.exit(0)
 
-mainMenuOptions = {
-        "Show All Stats": use_data.showAll,
+main_menu_options = {
+        "Show All Stats": use_data.show_all,
         "Summarize History": use_data.summarize,
-        "Save a Session": use_data.saveSession,
-        "Quit": quitPacioli,
+        "Save a Session": use_data.save_session,
+        "Quit": quit_pacioli,
         }
 

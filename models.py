@@ -1,10 +1,10 @@
-from typing import TypedDict
+from typing import Typed_dict
 
-class Session(TypedDict):
+class Session(Typed_dict):
     topic: str
     minutes: int
 
 
-class Analytics(TypedDict):
+class Analytics(Typed_dict):
     total_minutes: int
     by_topic: dict[str, int]

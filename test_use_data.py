@@ -58,17 +58,17 @@ invalid_sessions = (
 for topic_text, minutes_text in invalid_sessions:
     try:
         use_data.parse_session(topic_text, minutes_text)
-    except ValueError:
+    except Value_error:
         pass
     else:
-        raise AssertionError(f"Expected ValueError. Function ran normally for {topic_text}, {minutes_text}")
+        raise Assertion_error(f"Expected Value_error. Function ran normally for {topic_text}, {minutes_text}")
 
 
 with patch(
         "builtins.input",
-        side_effect=["   PYthOn  ", "15"]
+        side_effect=["   PYth_on  ", "15"]
         ):
-    result = use_data.getSessionData()
+    result = use_data.get_session_data()
 
     assert result == {
             "topic": "python",
@@ -86,7 +86,7 @@ with patch(
             ]
         ):
     with patch("builtins.print"):
-        result = use_data.getSessionData()
+        result = use_data.get_session_data()
 
         assert result == {
             "topic": "objects",

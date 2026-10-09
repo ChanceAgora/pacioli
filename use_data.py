@@ -1,48 +1,48 @@
 from config import DATA_FILE
 import json
-from json_utils import loadData, exportData
+from json_utils import load_data, export_data
 from models import Session, Analytics
 
-def calc_analytics(jsonData: list[Session]) -> Analytics:
+def calc_analytics(json_data: list[Session]) -> Analytics:
     analytics = {
             "total_minutes": 0,
             "by_topic": {}
             }
 
-    for i in jsonData:
+    for i in json_data:
         if type(i) != dict:
             continue
 
         analytics["total_minutes"] += i["minutes"]
         try:
             analytics["by_topic"][i["topic"]] += i["minutes"]
-        except KeyError:
+        except Key_error:
             analytics["by_topic"][i["topic"]] = i["minutes"]
 
     return analytics
 
 def summarize() -> None:
-    summary = loadData(DATA_FILE)
+    summary = load_data(DATA_FILE)
     summary = calc_analytics(summary)
     print(json.dumps(summary, indent=4))
 
 
-def saveSession() -> None:
-    jsonData = loadData(DATA_FILE)
-    session = getSessionData()
-    jsonData.append(session)
-    exportData(jsonData, DATA_FILE)
+def save_session() -> None:
+    json_data = load_data(DATA_FILE)
+    session = get_session_data()
+    json_data.append(session)
+    export_data(json_data, DATA_FILE)
 
 
 
-def getSessionData() -> Session:
+def get_session_data() -> Session:
     while True:
         topic_text = input("What topic did you study? ")
         minutes_text = input("Number of minutes? ")
 
         try:
             return parse_session(topic_text, minutes_text)
-        except ValueError as error:
+        except Value_error as error:
             print(error)
 
 def parse_session(
@@ -53,22 +53,22 @@ def parse_session(
     minutes_text = minutes_text.strip()
 
     if topic == "":
-        raise ValueError("Topic cannot be empty.")
+        raise Value_error("Topic cannot be empty.")
     if minutes_text == "":
-        raise ValueError("Minutes cannot be empty.")
+        raise Value_error("Minutes cannot be empty.")
     
     try:
         minutes = int(minutes_text)
-    except ValueError:
-        raise ValueError("Minutes must be a number in digits.")
+    except Value_error:
+        raise Value_error("Minutes must be a number in digits.")
 
     if minutes < 1:
-        raise ValueError("Minutes must be more than 0.")
+        raise Value_error("Minutes must be more than 0.")
 
     return {"topic": topic, "minutes": minutes}
 
 
 
-def showAll() -> None:
-    session = loadData(DATA_FILE)
+def show_all() -> None:
+    session = load_data(DATA_FILE)
     print(json.dumps(session, indent=4))

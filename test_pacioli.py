@@ -5,7 +5,7 @@ invalid_choices = ("-1", "0", "5", "apple", "")
 for choice in invalid_choices:
     try:
         parse_menu_choice(choice, 4)
-    except Value_error:
+    except ValueError:
         pass
     else:
         raise Assertion_error(

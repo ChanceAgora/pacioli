@@ -1,6 +1,7 @@
-import use_data
+from models import Session
 from copy import deepcopy
 from unittest.mock import patch
+import use_data
 
 empty_result = use_data.calc_analytics([])
 
@@ -11,7 +12,7 @@ assert empty_result == {
                 f"Unexpected result for empty input: {empty_result}"
                 )
 
-sessions = [
+sessions: list[Session] = [
     {"topic": "objects", "minutes": 35},
     {"topic": "functions", "minutes": 30},
     {"topic": "objects", "minutes": 25},
@@ -58,10 +59,10 @@ invalid_sessions = (
 for topic_text, minutes_text in invalid_sessions:
     try:
         use_data.parse_session(topic_text, minutes_text)
-    except Value_error:
+    except ValueError:
         pass
     else:
-        raise Assertion_error(f"Expected Value_error. Function ran normally for {topic_text}, {minutes_text}")
+        raise AssertionError(f"Expected Value_error. Function ran normally for {topic_text}, {minutes_text}")
 
 
 with patch(

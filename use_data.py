@@ -4,19 +4,16 @@ from json_utils import load_data, export_data
 from models import Session, Analytics
 
 def calc_analytics(json_data: list[Session]) -> Analytics:
-    analytics = {
+    analytics: Analytics = {
             "total_minutes": 0,
             "by_topic": {}
             }
 
     for i in json_data:
-        if type(i) != dict:
-            continue
-
         analytics["total_minutes"] += i["minutes"]
         try:
             analytics["by_topic"][i["topic"]] += i["minutes"]
-        except Key_error:
+        except KeyError:
             analytics["by_topic"][i["topic"]] = i["minutes"]
 
     return analytics
@@ -42,7 +39,7 @@ def get_session_data() -> Session:
 
         try:
             return parse_session(topic_text, minutes_text)
-        except Value_error as error:
+        except ValueError as error:
             print(error)
 
 def parse_session(
@@ -59,7 +56,7 @@ def parse_session(
     
     try:
         minutes = int(minutes_text)
-    except Value_error:
+    except ValueError:
         raise Value_error("Minutes must be a number in digits.")
 
     if minutes < 1:

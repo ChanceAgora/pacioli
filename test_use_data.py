@@ -1,4 +1,4 @@
-from models import Session
+from models import Session, Analytics
 from copy import deepcopy
 from unittest.mock import patch
 import use_data
@@ -20,15 +20,15 @@ sessions: list[Session] = [
 
 original_sessions = deepcopy(sessions)
 
-result = use_data.calc_analytics(sessions)
+result_1: Analytics = use_data.calc_analytics(sessions)
 
-assert result == {
+assert result_1 == {
     "total_minutes": 90,
     "by_topic": {
         "objects": 60,
         "functions": 30,
     },
-}, f"Unexpected summary: {result}"
+}, f"Unexpected summary: {result_1}"
 
 assert original_sessions == sessions, (
         f"Function mutated input. Expected {original_sessions}, got {sessions}"
@@ -69,13 +69,13 @@ with patch(
         "builtins.input",
         side_effect=["   PYth_on  ", "15"]
         ):
-    result = use_data.get_session_data()
+    result_2: Session = use_data.get_session_data()
 
-    assert result == {
+    assert result_2 == {
             "topic": "python",
             "minutes": 15
             }, (
-                    f"Unexpected output. {result}"
+                    f"Unexpected output. {result_2}"
                     )
 
 with patch(
@@ -87,9 +87,9 @@ with patch(
             ]
         ):
     with patch("builtins.print"):
-        result = use_data.get_session_data()
+        result_2 = use_data.get_session_data()
 
-        assert result == {
+        assert result_2 == {
             "topic": "objects",
             "minutes": 10
             }

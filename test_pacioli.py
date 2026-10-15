@@ -8,7 +8,7 @@ for choice in invalid_choices:
     except ValueError:
         pass
     else:
-        raise Assertion_error(
+        raise AssertionError(
                 f"Function exited normally. Expected Value_error for {choice!r}"
                 )
 

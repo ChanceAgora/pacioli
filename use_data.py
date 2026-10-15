@@ -25,9 +25,9 @@ def calc_analytics(json_data: list[Session]) -> Analytics:
     return analytics
 
 def summarize() -> None:
-    summary = load_data(DATA_FILE)
-    summary = calc_analytics(summary)
-    print(json.dumps(summary, indent=4))
+    summary: list[Session] = load_data(DATA_FILE)
+    analytics_summary: Analytics = calc_analytics(summary)
+    print(json.dumps(analytics_summary, indent=4))
 
 
 def save_session() -> None:

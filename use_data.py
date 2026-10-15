@@ -4,6 +4,12 @@ from json_utils import load_data, export_data
 from models import Session, Analytics
 
 def calc_analytics(json_data: list[Session]) -> Analytics:
+    """Uses the given list of Session data to calculate analytics.
+
+    Args:
+        json_data: A list of Session data
+    """
+
     analytics: Analytics = {
             "total_minutes": 0,
             "by_topic": {}
@@ -33,6 +39,9 @@ def save_session() -> None:
 
 
 def get_session_data() -> Session:
+    """Prompts the user for input data and returns a Session with that data."""
+
+
     while True:
         topic_text = input("What topic did you study? ")
         minutes_text = input("Number of minutes? ")

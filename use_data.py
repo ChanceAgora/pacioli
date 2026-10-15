@@ -50,17 +50,17 @@ def parse_session(
     minutes_text = minutes_text.strip()
 
     if topic == "":
-        raise Value_error("Topic cannot be empty.")
+        raise ValueError("Topic cannot be empty.")
     if minutes_text == "":
-        raise Value_error("Minutes cannot be empty.")
+        raise ValueError("Minutes cannot be empty.")
     
     try:
         minutes = int(minutes_text)
     except ValueError:
-        raise Value_error("Minutes must be a number in digits.")
+        raise ValueError("Minutes must be a number in digits.")
 
     if minutes < 1:
-        raise Value_error("Minutes must be more than 0.")
+        raise ValueError("Minutes must be more than 0.")
 
     return {"topic": topic, "minutes": minutes}
 
